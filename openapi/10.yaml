@@ -1,0 +1,3802 @@
+openapi: 3.0.0
+info:
+  title: 1SilverBullet PMS APIs
+  version: 1.0.0
+  description: >-
+
+    # Overview
+     The 1SilverBullet PMS APIs support digital enablement of customer (investor) onboarding process by distributors of financial investment products like PMS, AIF etc. provided by manufacturers like Aditya Birla Money, ICICI Securities, Anand Rathi, Bajaj Finance etc.
+    
+    ## Key Stakeholders
+    
+    -   PMS Provider: Providers of investment products like PMS or AIF
+
+    -   Distributors: Sellers of investment products provided by Manufacturers
+
+    -   Platform (1SB Admin): Administrator of the PMS
+
+    -   Customer (Investors): End Consumer / Investor in the Investment Product
+
+
+    # Authentication
+
+    PMS APIs support 2 types of authentication mechanism * OAuth2/JWT Token
+    Authentication: 
+        Users are issued OAuth2/JWT token based on login mechanism aided OTP verification. 
+    * Basic Authentication: 
+        1SilverBullet provided Key Id and Secret to be used by software systems of Manufacturere and Distributors.
+     
+  termsOfService: 'https://1silverbullet.tech/'
+  contact:
+    name: 1SilverBullet Support Team
+    url: 'mailto:bhavik.shah@1silverbullet.tech'
+    email: bhavik.shah@1silverbullet.tech
+  license:
+    name: (c) 2021 Silverbullet Platforms Private Limited
+    url: 'https://1silverbullet.tech'
+servers:
+  - url: '//15.206.77.182:8081'
+paths:
+  /RiskProfileQuestions/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: manufacturerId
+          description: manufacturerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: RiskProfileQuestionsUsingGET
+      summary: RiskProfileQuestions
+  /accountApplicationForm/:
+    post:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAdditionalDetailsUsingPOST
+      summary: customerAdditionalDetails
+  /accountDocuments/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: accountDocumentsUsingGET
+      summary: accountDocuments
+  /accountInformation/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: accountInfoUsingGET
+      summary: accountInfo
+  /changeUserStatus:
+    put:
+      requestBody:
+        description: userMasterGetServiceList
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/UserMasterGetService'
+        required: true
+      tags:
+        - User Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: changeUserStatusUsingPUT
+      summary: changeUserStatus
+  /checkerAction/:
+    put:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: isApproved
+          description: isApproved
+          schema:
+            type: boolean
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: checkerActionUsingPUT
+      summary: checkerAction
+  /comments/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: commentsUsingGET
+      summary: comments
+    put:
+      requestBody:
+        description: comments
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AccountCommentsUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: commentsModificationUsingPUT
+      summary: commentsModification
+    post:
+      requestBody:
+        description: comments
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/AccountCommentsService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: commentsUsingPOST
+      summary: comments
+  /customer/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: distributorId
+          description: distributorId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: manufacturerId
+          description: manufacturerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: pageNumber
+          description: pageNumber
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: pageSize
+          description: pageSize
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerUsingGET
+      summary: customer
+    put:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerMasterService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerUsingPUT
+      summary: customer
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerMasterService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerUsingPOST
+      summary: customer
+  /customerAccountDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAccountDetailsUsingGET
+      summary: customerAccountDetails
+    put:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerAccountService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAccountDetailsUsingPUT
+      summary: customerAccountDetails
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerAccountService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAccountCreationUsingPOST
+      summary: customerAccountCreation
+  /customerAdditionalDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAddressUsingGET
+      summary: customerAddress
+    put:
+      requestBody:
+        description: CustomerOccupation
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerOccupationUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAdditionalDetailsModificationUsingPUT
+      summary: customerAdditionalDetailsModification
+    post:
+      requestBody:
+        description: CustomerOccupation
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerOccupationService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAdditionalDetailsUsingPOST_1
+      summary: customerAdditionalDetails
+  /customerAddress/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: addressType
+          description: addressType
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAddressUsingGET_1
+      summary: customerAddress
+    put:
+      requestBody:
+        description: customerAddress
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerAddressUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAddressModificationUsingPUT
+      summary: customerAddressModification
+    post:
+      requestBody:
+        description: customerAddress
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerAddressService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerAddressUsingPOST
+      summary: customerAddress
+  /customerBankDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: bankId
+          description: bankId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: CustomerBankDetailsUsingGET
+      summary: CustomerBankDetails
+    put:
+      requestBody:
+        description: customerBankAccountDetailsService
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBankAccountDetailsUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: bankId
+          description: bankId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: CustomerBankDetailsModificationUsingPUT
+      summary: CustomerBankDetailsModification
+    post:
+      requestBody:
+        description: customerBankAccountDetailsService
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerBankAccountDetailsService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: insertCustomerBankDetailsUsingPOST
+      summary: insertCustomerBankDetails
+  /customerContact/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerContactUsingGET
+      summary: customerContact
+    put:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerContactService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerContactModificationUsingPUT
+      summary: customerContactModification
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerContactService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerContactUsingPOST
+      summary: customerContact
+  /customerDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: pan
+          description: pan
+          schema:
+            type: string
+          in: query
+          required: true
+        - name: manufacturerId
+          description: manufacturerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: productId
+          description: productId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: strategyId
+          description: strategyId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: customerType
+          description: customerType
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerDetailsUsingGET
+      summary: customerDetails
+  /customerDisclosure/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerDisclosureUsingGET
+      summary: customerDisclosure
+    put:
+      requestBody:
+        description: customerDisclosure
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDisclosureInterestUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerDisclosureModificationUsingPUT
+      summary: customerDisclosureModification
+    post:
+      requestBody:
+        description: customerDisclosure
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDisclosureInterestService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerDisclosureUsingPOST
+      summary: customerDisclosure
+  /customerFatcaDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getCustomerFatcaDetailsUsingGET
+      summary: getCustomerFatcaDetails
+    put:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerFatcaDetailsService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: fatcaId
+          description: fatcaId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: updateCustomerFatcaDetailsUsingPUT
+      summary: updateCustomerFatcaDetails
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerFatcaDetailsService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: insertCustomerFatcaDetailsUsingPOST
+      summary: insertCustomerFatcaDetails
+  /customerFatcaList/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getCustomerFatcaListUsingGET
+      summary: getCustomerFatcaList
+  /customerInfo/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerUsingGET_1
+      summary: customer
+  /customerInformation/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerDetailsUsingGET_1
+      summary: customerDetails
+  /customerInvestmentProfile/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerInvestmentProfileUsingGET
+      summary: customerInvestmentProfile
+    put:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerInvestmentProfileDetailsService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerInvestmentProfileModificationUsingPUT
+      summary: customerInvestmentProfileModification
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerInvestmentProfileDetailsService'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerInvestmentProfileUsingPOST
+      summary: customerInvestmentProfile
+  /customerPreferenceDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerPreferenceDetailsUsingGET
+      summary: customerPreferenceDetails
+    put:
+      requestBody:
+        description: CustomerPreferece
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerPreferencesUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerPreferenceDetailsModificationUsingPUT
+      summary: customerPreferenceDetailsModification
+    post:
+      requestBody:
+        description: CustomerPreferece
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerPreferencesService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerPreferenceDetailsUsingPOST
+      summary: customerPreferenceDetails
+  /customerRiskProfile/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerRiskProfileUsingGET
+      summary: customerRiskProfile
+    put:
+      requestBody:
+        description: customerRiskProfile
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerRiskProfileDetailsUpdateService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerRiskProfileModificationUsingPUT
+      summary: customerRiskProfileModification
+    post:
+      requestBody:
+        description: customerRiskProfile
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerRiskProfileDetailsService'
+        required: true
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: customerRiskProfileUsingPOST
+      summary: customerRiskProfile
+  /deleteUserDetails:
+    put:
+      requestBody:
+        description: userIdList
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                format: int32
+                type: integer
+        required: true
+      tags:
+        - User Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: deleteUserDetailsUsingPUT
+      summary: deleteUserDetails
+  /dematNomineeDetails/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: nomineeID
+          description: nomineeID
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: false
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: DematNomineeDetailsUsingGET
+      summary: DematNomineeDetails
+    put:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerNomineeDetailsUpdateServiceArray'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: DematNomineeDetailsModificationsUsingPUT
+      summary: DematNomineeDetailsModifications
+    post:
+      requestBody:
+        $ref: '#/components/requestBodies/CustomerNomineeDetailsServiceArray'
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: insertDematNomineeDetailsUsingPOST
+      summary: insertDematNomineeDetails
+    delete:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: accountId
+          description: accountId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: nomineeID
+          description: nomineeID
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '204':
+          description: No Content
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+      operationId: deleteDematNomineeDetailsUsingDELETE
+      summary: deleteDematNomineeDetails
+  /getOTP:
+    post:
+      tags:
+        - User Authentication
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: contact
+          description: contact
+          schema:
+            type: string
+          in: query
+          required: true
+        - name: otpType
+          description: otpType
+          schema:
+            type: string
+          in: query
+          required: true
+        - name: customerId
+          description: customerId
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getOTPUsingPOST
+      summary: getOTP
+  /getPlatformRoleDetails:
+    get:
+      tags:
+        - User Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getPlatformRoleDetailsUsingGET
+      summary: getPlatformRoleDetails
+  /getPlatformUserDetails:
+    get:
+      tags:
+        - User Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: pageNumber
+          description: pageNumber
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+        - name: pageSize
+          description: pageSize
+          schema:
+            format: int32
+            type: integer
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: getPlatformUserDetailsUsingGET
+      summary: getPlatformUserDetails
+  /insertUserDetails:
+    post:
+      requestBody:
+        description: userMasterService
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserMasterService'
+        required: true
+      tags:
+        - User Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: insertUserDetailsUsingPOST
+      summary: insertUserDetails
+  /loginAuthOTPVerify:
+    post:
+      requestBody:
+        description: jwtRequest
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JWTRequest'
+        required: true
+      tags:
+        - User Management
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/JWTResponse'
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: loginUsingPOST
+      summary: login
+  /loginGetOTP:
+    post:
+      tags:
+        - User Management
+      parameters:
+        - name: emailId
+          description: emailId
+          schema:
+            type: string
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: loginGetOTPUsingPOST
+      summary: loginGetOTP
+  /loginValidation:
+    get:
+      requestBody:
+        description: login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginValidation'
+        required: true
+      tags:
+        - User Authentication
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/StatusMessage'
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: loginEmailVerificationUsingGET
+      summary: loginEmailVerification
+  /userPreferenceLabel/:
+    get:
+      tags:
+        - Customer Management
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: string
+          description: OK
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: userPreferenceLabelUsingGET
+      summary: userPreferenceLabel
+  /verifyContact:
+    post:
+      tags:
+        - User Authentication
+      parameters:
+        - name: Authorization
+          description: Authorization
+          schema:
+            type: string
+          in: header
+          required: true
+        - name: oneTimePassword
+          description: oneTimePassword
+          schema:
+            type: string
+          in: query
+          required: true
+        - name: transactionNumber
+          description: transactionNumber
+          schema:
+            type: string
+          in: query
+          required: true
+      responses:
+        '200':
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: OK
+        '201':
+          description: Created
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+      operationId: verifyContactUsingPOST
+      summary: verifyContact
+components:
+  schemas:
+    MasterManufacturer:
+      type: object
+      properties:
+        createdBy:
+          format: int32
+          type: integer
+        createdDate:
+          format: date-time
+          type: string
+        manufacturerCustomerServiceNo:
+          type: string
+        manufacturerGst:
+          type: string
+        manufacturerId:
+          format: int32
+          type: integer
+        manufacturerKey:
+          format: int32
+          type: integer
+        manufacturerLogoUrl:
+          type: string
+        manufacturerName:
+          type: string
+        manufacturerPan:
+          type: string
+        manufacturerShortName:
+          type: string
+        manufacturerTollFreeNo:
+          type: string
+        maxDpNomineeLimits:
+          format: int32
+          type: integer
+        maxPmsNomineeLimits:
+          format: int32
+          type: integer
+        maxTinNumberLimits:
+          format: int32
+          type: integer
+        softdelete:
+          type: boolean
+    StrategyTaxStatusAllowedService:
+      type: object
+      properties:
+        softDelete:
+          type: boolean
+        taxStatusId:
+          format: int32
+          type: integer
+    ManufacturerMasterStrategyFeeUpdateService:
+      type: object
+      properties:
+        feesId:
+          format: int32
+          type: integer
+        manufacturerFeeCode:
+          type: string
+        manufacturerFeeDesc:
+          type: string
+        manufacturerFeeName:
+          type: string
+        manufacturerFeeRate:
+          format: double
+          type: number
+        manufacturerFeeType:
+          type: string
+        softDelete:
+          type: boolean
+        strategyId:
+          format: int32
+          type: integer
+    CustomerAddressService:
+      type: object
+      properties:
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        addressType:
+          format: int32
+          type: integer
+        city:
+          type: string
+        country:
+          type: string
+        ocrMatchPercentage:
+          format: double
+          type: number
+        ocrResponse:
+          type: string
+        pincode:
+          type: string
+        poaUrl:
+          type: string
+        proofOfAddressDocNumber:
+          type: string
+        proofOfAddressType:
+          format: int32
+          type: integer
+        state:
+          type: string
+        systemRecommendation:
+          type: boolean
+        userRecommendation:
+          type: boolean
+    ContactType:
+      type: object
+      properties:
+        contactName:
+          type: string
+        contactTypeId:
+          format: int32
+          type: integer
+    UserMasterService:
+      type: object
+      properties:
+        emailId:
+          type: string
+        name:
+          type: string
+        phonenumber:
+          type: string
+        roleIdList:
+          type: array
+          items:
+            format: int32
+            type: integer
+        tenantId:
+          format: int32
+          type: integer
+        userType:
+          type: string
+    CustomerOccupationUpdateService:
+      type: object
+      properties:
+        annualIncome:
+          format: int32
+          type: integer
+        city:
+          type: string
+        country:
+          type: string
+        designation:
+          type: string
+        education:
+          format: int32
+          type: integer
+        employeeSince:
+          format: date-time
+          type: string
+        employerName:
+          type: string
+        establishmentName:
+          type: string
+        natureOfBusiness:
+          type: string
+        occupation:
+          format: int32
+          type: integer
+        occupationId:
+          format: int32
+          type: integer
+        officeAddress:
+          type: string
+        pep:
+          format: int32
+          type: integer
+        pincode:
+          type: string
+        primarySourceOfWealth:
+          format: int32
+          type: integer
+        state:
+          type: string
+    ManufacturerStrategyDocumentInsertService:
+      type: object
+      properties:
+        documentId:
+          format: int32
+          type: integer
+        manufacturerId:
+          format: int32
+          type: integer
+        sequenceNo:
+          format: int32
+          type: integer
+        signId:
+          format: int32
+          type: integer
+        strategyId:
+          format: int32
+          type: integer
+        strategySubDocumentGroupName:
+          type: string
+        strategySubDocumentInsertServiceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManufacturerStrategySubDocumentInsertService'
+        strategySubDocumentMandatory:
+          type: boolean
+        strategySubDocumentRepeatRequired:
+          type: boolean
+    DocumentModel:
+      type: object
+      properties:
+        customerId:
+          format: int32
+          type: integer
+        primaryCustomerId:
+          format: int32
+          type: integer
+        requestType:
+          type: string
+        s3Url:
+          type: string
+    JWTRequest:
+      type: object
+      properties:
+        emailId:
+          type: string
+        oneTimePassword:
+          type: string
+        otpTransactionNumber:
+          type: string
+    CustomerNomineeDetailsUpdateService:
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        guardianAddressLine1:
+          type: string
+        guardianAddressLine2:
+          type: string
+        guardianCity:
+          type: string
+        guardianCountry:
+          type: string
+        guardianEmailId:
+          type: string
+        guardianGender:
+          format: int32
+          type: integer
+        guardianIdentificationPhotoURL:
+          type: string
+        guardianIdentificationSignatureURL:
+          type: string
+        guardianIdentificationType:
+          format: int32
+          type: integer
+        guardianIdentificationValue:
+          type: string
+        guardianName:
+          type: string
+        guardianOthersRelation:
+          type: string
+        guardianPan:
+          type: string
+        guardianPhoneNumber:
+          type: string
+        guardianPincode:
+          type: string
+        guardianRelation:
+          format: int32
+          type: integer
+        guardianState:
+          type: string
+        nomineeAddressLine1:
+          type: string
+        nomineeAddressLine2:
+          type: string
+        nomineeDob:
+          type: string
+        nomineeEmailId:
+          type: string
+        nomineeFirstName:
+          type: string
+        nomineeGender:
+          format: int32
+          type: integer
+        nomineeId:
+          format: int32
+          type: integer
+        nomineeIdentificationPhotoURL:
+          type: string
+        nomineeIdentificationSignatureURL:
+          type: string
+        nomineeIdentificationType:
+          format: int32
+          type: integer
+        nomineeIdentificationValue:
+          type: string
+        nomineeLastName:
+          type: string
+        nomineeMiddleName:
+          type: string
+        nomineeMinor:
+          type: boolean
+        nomineeOthersRelation:
+          type: string
+        nomineePan:
+          type: string
+        nomineePhoneNumber:
+          type: string
+        nomineeRelation:
+          format: int32
+          type: integer
+        nomineeShare:
+          format: float
+          type: number
+        pincode:
+          type: string
+        state:
+          type: string
+    StrategyTaxStatusAllowedUpdateService:
+      type: object
+      properties:
+        softDelete:
+          type: boolean
+        strategyTaxMapId:
+          format: int32
+          type: integer
+        taxStatusId:
+          format: int32
+          type: integer
+    AccountCommentsService:
+      type: object
+      properties:
+        checkerComment:
+          type: string
+        commentStatus:
+          format: int32
+          type: integer
+        commentType:
+          format: int32
+          type: integer
+        makerComment:
+          type: string
+        page:
+          type: string
+    CustomerDisclosureInterestService:
+      type: object
+      properties:
+        interestedHolder:
+          type: string
+        natureOfInterest:
+          type: string
+        noOfSharesHeld:
+          format: double
+          type: number
+        paidUpCapital:
+          format: double
+          type: number
+    ManufacturerRPAnswerUpdateService:
+      type: object
+      properties:
+        answer:
+          type: string
+        answerId:
+          format: int32
+          type: integer
+        score:
+          format: int32
+          type: integer
+        sequence:
+          format: int32
+          type: integer
+    CustomerAddressUpdateService:
+      type: object
+      properties:
+        addressId:
+          format: int32
+          type: integer
+        addressLine1:
+          type: string
+        addressLine2:
+          type: string
+        addressType:
+          format: int32
+          type: integer
+        city:
+          type: string
+        country:
+          type: string
+        ocrMatchPercentage:
+          format: double
+          type: number
+        ocrResponse:
+          type: string
+        pincode:
+          type: string
+        poaUrl:
+          type: string
+        proofOfAddressDocNumber:
+          type: string
+        proofOfAddressType:
+          format: int32
+          type: integer
+        state:
+          type: string
+        systemRecommendation:
+          type: boolean
+        userRecommendation:
+          type: boolean
+    CustomerAccountService:
+      type: object
+      properties:
+        accountStatusCode:
+          format: int32
+          type: integer
+        applicationDocumentUrl:
+          type: string
+        applicationNumber:
+          type: string
+        bankId:
+          format: int32
+          type: integer
+        customerTypeDetails:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerTypeService'
+        investmentAmount:
+          format: double
+          type: number
+        modeOfOperation:
+          format: int32
+          type: integer
+        pmsAccountId:
+          type: string
+        productId:
+          format: int32
+          type: integer
+        strategyId:
+          format: int32
+          type: integer
+    JWTResponse:
+      type: object
+      properties:
+        distributorLogoURL:
+          type: string
+        jwtToken:
+          type: string
+        roleId:
+          type: array
+          items:
+            format: int32
+            type: integer
+        status:
+          $ref: '#/components/schemas/Status'
+        tenantID:
+          format: int32
+          type: integer
+        userId:
+          format: int32
+          type: integer
+        userName:
+          type: string
+        userType:
+          type: string
+    Status:
+      type: object
+      properties:
+        errorCode:
+          type: string
+        errorMessage:
+          type: string
+        message:
+          type: string
+        statusCode:
+          type: string
+    ManufacturerRPQuestionAnswerUpdateService:
+      type: object
+      properties:
+        answer:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManufacturerRPAnswerUpdateService'
+        question:
+          type: string
+        questionId:
+          format: int32
+          type: integer
+        sequence:
+          format: int32
+          type: integer
+    CustomerInvestmentProfileDetailsService:
+      type: object
+      properties:
+        grossAnnualIncome:
+          format: int32
+          type: integer
+        investInStockMarket:
+          format: int32
+          type: integer
+        investmentObjective:
+          format: int32
+          type: integer
+        investmentOrTradingExperience:
+          format: int32
+          type: integer
+        investmentTimePeriod:
+          format: int32
+          type: integer
+        netWorth:
+          format: int32
+          type: integer
+        portfolioPercentage:
+          format: int32
+          type: integer
+        riskTolerance:
+          format: int32
+          type: integer
+    CustomerNegativeListCompaniesService:
+      type: object
+      properties:
+        companyId:
+          format: int32
+          type: integer
+    CustomerRiskProfileDetailsService:
+      type: object
+      properties:
+        answerId:
+          format: int32
+          type: integer
+        questionId:
+          format: int32
+          type: integer
+    PlatformSubDocumentGetService:
+      type: object
+      properties:
+        subDocumentId:
+          format: int32
+          type: integer
+        subDocumentName:
+          type: string
+    ManufacturerMasterStrategyFeeService:
+      type: object
+      properties:
+        manufacturerFeeCode:
+          type: string
+        manufacturerFeeDesc:
+          type: string
+        manufacturerFeeName:
+          type: string
+        manufacturerFeeRate:
+          format: double
+          type: number
+        manufacturerFeeType:
+          type: string
+        softDelete:
+          type: boolean
+        strategyId:
+          format: int32
+          type: integer
+    ManufacturerMasterStrategyService:
+      type: object
+      properties:
+        manufacturerProductId:
+          format: int32
+          type: integer
+        productSubId:
+          format: int32
+          type: integer
+        softDelete:
+          type: boolean
+        strategyDescription:
+          type: string
+        strategyISIN:
+          type: string
+        strategyListed:
+          type: boolean
+        strategyLogoURL:
+          type: string
+        strategyNRIAllowed:
+          type: boolean
+        strategyName:
+          type: string
+        strategyShortName:
+          type: string
+        taxStatusAllowed:
+          type: array
+          items:
+            $ref: '#/components/schemas/StrategyTaxStatusAllowedService'
+    ManufacturerStrategySubDocumentGetService:
+      type: object
+      properties:
+        strategySubDocumentId:
+          format: int32
+          type: integer
+        strategySubDocumentName:
+          type: string
+    CustomerNagativeListSectorsUpdateService:
+      type: object
+      properties:
+        id:
+          format: int32
+          type: integer
+        sectorId:
+          format: int32
+          type: integer
+    ManufacturerRPProfileUpdateService:
+      type: object
+      properties:
+        maximumScore:
+          format: int32
+          type: integer
+        minimumScore:
+          format: int32
+          type: integer
+        question:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManufacturerRPQuestionAnswerUpdateService'
+        rpCategory:
+          type: string
+        rpCategoryDescription:
+          type: string
+        rpCode:
+          type: string
+        rpDescription:
+          type: string
+        rpId:
+          format: int32
+          type: integer
+        rpName:
+          type: string
+        rpProfileScore:
+          format: int32
+          type: integer
+        softDelete:
+          type: boolean
+    CustomerMasterService:
+      type: object
+      properties:
+        customerDob:
+          type: string
+        customerFirstName:
+          type: string
+        customerLastName:
+          type: string
+        customerMiddleName:
+          type: string
+        customerNamePrefix:
+          format: int32
+          type: integer
+        customerPan:
+          type: string
+        customerStatus:
+          format: int32
+          type: integer
+        distributorId:
+          format: int32
+          type: integer
+        fatherFirstName:
+          type: string
+        fatherLastName:
+          type: string
+        fatherMiddleName:
+          type: string
+        fatherNamePrefix:
+          format: int32
+          type: integer
+        gender:
+          format: int32
+          type: integer
+        manufacturerId:
+          format: int32
+          type: integer
+        motherFirstName:
+          type: string
+        motherLastName:
+          type: string
+        motherMaidenFirstName:
+          type: string
+        motherMaidenLastName:
+          type: string
+        motherMaidenMiddleName:
+          type: string
+        motherMaidenNamePrefix:
+          format: int32
+          type: integer
+        motherMiddleName:
+          type: string
+        motherNamePrefix:
+          format: int32
+          type: integer
+        nationality:
+          format: int32
+          type: integer
+        otherNationality:
+          type: string
+        photoUrl:
+          type: string
+        pmsCrn:
+          type: string
+        poiMatchStatus:
+          type: string
+        poiType:
+          format: int32
+          type: integer
+        poiUrl:
+          type: string
+        residentialStatus:
+          format: int32
+          type: integer
+        wetSignatureUrl:
+          type: string
+    CustomerTypeService:
+      type: object
+      properties:
+        customerId:
+          format: int32
+          type: integer
+        customerType:
+          format: int32
+          type: integer
+        relationship:
+          format: int32
+          type: integer
+    ManufacturerRPQuestionAnswerService:
+      type: object
+      properties:
+        answer:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManufacturerRPAnswerService'
+        question:
+          type: string
+        sequence:
+          format: int32
+          type: integer
+    PlatformMSTDSecurities:
+      type: object
+      properties:
+        securityISIN:
+          type: string
+        securityId:
+          format: int32
+          type: integer
+        securityListed:
+          format: byte
+          type: string
+        securityName:
+          type: string
+        securityType:
+          type: string
+    PlatformDocumentInsertService:
+      type: object
+      properties:
+        documentName:
+          type: string
+        platformSubDocumentInsertServiceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformSubDocumentInsertService'
+    DistributorCodeType:
+      type: object
+      properties:
+        distributorCodeType:
+          type: string
+        distributorCodeTypeId:
+          format: int32
+          type: integer
+    CustomerBankAccountDetailsUpdateService:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        accountType:
+          format: int32
+          type: integer
+        bankAddress:
+          type: string
+        bankCity:
+          type: string
+        bankCountry:
+          type: string
+        bankName:
+          type: string
+        bankPincode:
+          type: string
+        bankState:
+          type: string
+        branch:
+          type: string
+        cancelledChequeUrl:
+          type: string
+        chequeMatchStatus:
+          type: boolean
+        ifscCode:
+          type: string
+    CustomerPreferencesUpdateService:
+      type: object
+      properties:
+        preferenceId:
+          format: int32
+          type: integer
+        preferenceType:
+          format: int32
+          type: integer
+        preferenceValue:
+          type: string
+    UserMasterGetService:
+      type: object
+      properties:
+        emailId:
+          type: string
+        lastSignIn:
+          format: date
+          type: string
+        name:
+          type: string
+        userId:
+          format: int32
+          type: integer
+        userLocked:
+          type: boolean
+    UserMaster:
+      type: object
+      properties:
+        createdBy:
+          format: int32
+          type: integer
+        createdDate:
+          format: date
+          type: string
+        emailId:
+          type: string
+        failedAttempt:
+          format: int32
+          type: integer
+        name:
+          type: string
+        phonenumber:
+          type: string
+        softDelete:
+          type: boolean
+        tenantId:
+          format: int32
+          type: integer
+        userId:
+          format: int32
+          type: integer
+        userLocked:
+          type: boolean
+        userType:
+          type: string
+    LoginValidation:
+      type: object
+      properties:
+        email:
+          type: string
+    DistributorDetails:
+      type: object
+      properties:
+        distributorCode:
+          type: string
+        distributorCodeExpiry:
+          format: date-time
+          type: string
+        distributorCodeType:
+          type: string
+        distributorGST:
+          type: string
+        distributorId:
+          type: string
+        distributorName:
+          type: string
+        distributorPAN:
+          type: string
+        uploadlogo:
+          type: string
+    DistributorContact:
+      type: object
+      properties:
+        distributorContactISDCode:
+          type: string
+        distributorContactId:
+          type: string
+        distributorContactMobile:
+          type: string
+        distributorContactName:
+          type: string
+        distributorContactPrimayEmail:
+          type: string
+        distributorContactSecondaryEmail:
+          type: string
+        distributorContactType:
+          type: string
+        distributorId:
+          type: string
+        distributorLandline:
+          type: string
+        distributorLandlineExt:
+          type: string
+        manufacturerId:
+          type: string
+    CustomerDisclosureInterestUpdateService:
+      type: object
+      properties:
+        disclosureId:
+          format: int32
+          type: integer
+        interestedHolder:
+          type: string
+        natureOfInterest:
+          type: string
+        noOfSharesHeld:
+          format: double
+          type: number
+        paidUpCapital:
+          format: double
+          type: number
+    ManufacturerStrategySubDocumentInsertService:
+      type: object
+      properties:
+        strategySubDocumentName:
+          type: string
+    CustomerBankAccountDetailsService:
+      type: object
+      properties:
+        accountNumber:
+          type: string
+        accountType:
+          format: int32
+          type: integer
+        bankAddress:
+          type: string
+        bankCity:
+          type: string
+        bankCountry:
+          type: string
+        bankName:
+          type: string
+        bankPincode:
+          type: string
+        bankState:
+          type: string
+        branch:
+          type: string
+        cancelledChequeUrl:
+          type: string
+        chequeMatchStatus:
+          type: boolean
+        ifscCode:
+          type: string
+    PlatformSubDocumentInsertService:
+      type: object
+      properties:
+        subDocumentName:
+          type: string
+    CustomerTinDetailsService:
+      type: object
+      properties:
+        feORTin:
+          type: string
+        feType:
+          type: string
+        tinIssuingCountry:
+          type: string
+        typeOfTin:
+          format: int32
+          type: integer
+    PlatformDocumentGetService:
+      type: object
+      properties:
+        documentId:
+          format: int32
+          type: integer
+        documentName:
+          type: string
+        platformSubDocumentGetServiceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/PlatformSubDocumentGetService'
+    CustomerPreferencesService:
+      type: object
+      properties:
+        preferenceType:
+          format: int32
+          type: integer
+        preferenceValue:
+          type: string
+    CustomerNomineeDetailsService:
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        guardianAddressLine1:
+          type: string
+        guardianAddressLine2:
+          type: string
+        guardianCity:
+          type: string
+        guardianCountry:
+          type: string
+        guardianEmailId:
+          type: string
+        guardianGender:
+          format: int32
+          type: integer
+        guardianIdentificationPhotoURL:
+          type: string
+        guardianIdentificationSignatureURL:
+          type: string
+        guardianIdentificationType:
+          format: int32
+          type: integer
+        guardianIdentificationValue:
+          type: string
+        guardianName:
+          type: string
+        guardianOthersRelation:
+          type: string
+        guardianPan:
+          type: string
+        guardianPhoneNumber:
+          type: string
+        guardianPincode:
+          type: string
+        guardianRelation:
+          format: int32
+          type: integer
+        guardianState:
+          type: string
+        nomineeAddressLine1:
+          type: string
+        nomineeAddressLine2:
+          type: string
+        nomineeDob:
+          type: string
+        nomineeEmailId:
+          type: string
+        nomineeFirstName:
+          type: string
+        nomineeGender:
+          format: int32
+          type: integer
+        nomineeIdentificationPhotoURL:
+          type: string
+        nomineeIdentificationSignatureURL:
+          type: string
+        nomineeIdentificationType:
+          format: int32
+          type: integer
+        nomineeIdentificationValue:
+          type: string
+        nomineeLastName:
+          type: string
+        nomineeMiddleName:
+          type: string
+        nomineeMinor:
+          type: boolean
+        nomineeOthersRelation:
+          type: string
+        nomineePan:
+          type: string
+        nomineePhoneNumber:
+          type: string
+        nomineeRelation:
+          format: int32
+          type: integer
+        nomineeShare:
+          format: float
+          type: number
+        pincode:
+          type: string
+        state:
+          type: string
+    CustomerContactService:
+      type: object
+      properties:
+        city:
+          type: string
+        country:
+          type: string
+        mobile:
+          type: string
+        mobileBelongsTo:
+          type: string
+        officeTelIsd:
+          type: string
+        officeTelephoneNumber:
+          type: string
+        primaryEmailBelongsTo:
+          type: string
+        primaryEmailId:
+          type: string
+        secondaryEmailBelongsTo:
+          type: string
+        secondaryEmailId:
+          type: string
+        state:
+          type: string
+    ManufacturerRPAnswerService:
+      type: object
+      properties:
+        answer:
+          type: string
+        score:
+          format: int32
+          type: integer
+        sequence:
+          format: int32
+          type: integer
+    AccountCommentsUpdateService:
+      type: object
+      properties:
+        checkerComment:
+          type: string
+        commentStatus:
+          format: int32
+          type: integer
+        commentType:
+          format: int32
+          type: integer
+        id:
+          format: int32
+          type: integer
+        makerComment:
+          type: string
+        page:
+          type: string
+    CustomerNegativeListCompaniesUpdateService:
+      type: object
+      properties:
+        companyId:
+          format: int32
+          type: integer
+        id:
+          format: int32
+          type: integer
+    CustomerRiskProfileDetailsUpdateService:
+      type: object
+      properties:
+        answerId:
+          format: int32
+          type: integer
+        questionId:
+          format: int32
+          type: integer
+        riskId:
+          format: int32
+          type: integer
+    DistributorAddress:
+      type: object
+      properties:
+        distributorAddress1:
+          type: string
+        distributorAddress2:
+          type: string
+        distributorAddressId:
+          type: string
+        distributorAddressType:
+          type: string
+        distributorCity:
+          type: string
+        distributorCountry:
+          type: string
+        distributorId:
+          type: string
+        distributorPincode:
+          type: string
+        distributorState:
+          type: string
+        manufacturerId:
+          type: string
+    ManufacturerStrategyDocumentGetService:
+      type: object
+      properties:
+        documentId:
+          format: int32
+          type: integer
+        manufacturerId:
+          format: int32
+          type: integer
+        sequenceNo:
+          format: int32
+          type: integer
+        signId:
+          format: int32
+          type: integer
+        strategyDocumentGroupId:
+          format: int32
+          type: integer
+        strategyDocumentId:
+          format: int32
+          type: integer
+        strategyId:
+          format: int32
+          type: integer
+        strategySubDocumentGetServiceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManufacturerStrategySubDocumentGetService'
+        strategySubDocumentGroupName:
+          type: string
+        strategySubDocumentMandatory:
+          type: boolean
+        strategySubDocumentRepeatRequired:
+          type: boolean
+    CustomerFatcaDetailsService:
+      type: object
+      properties:
+        citizenship:
+          format: int32
+          type: integer
+        citizenshipOther:
+          type: string
+        cityOfBirth:
+          type: string
+        countryOfBirth:
+          format: int32
+          type: integer
+        customerTinDetailsServiceList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CustomerTinDetailsService'
+        noTinOrFe:
+          type: boolean
+        noTinOrFeCountry:
+          type: string
+        noTinOrFeNumber:
+          type: string
+        noTinTypeOfNumber:
+          format: int32
+          type: integer
+        otherCountryOfBirth:
+          type: string
+        taxResidentCountry:
+          format: int32
+          type: integer
+        trcAddress:
+          type: string
+        trcCity:
+          type: string
+        trcCountry:
+          type: string
+        trcState:
+          type: string
+        trcZipCode:
+          type: string
+        usPerson:
+          format: int32
+          type: integer
+    ManufacturerMasterStrategyUpdateService:
+      type: object
+      properties:
+        manufacturerProductId:
+          format: int32
+          type: integer
+        productSubId:
+          format: int32
+          type: integer
+        softDelete:
+          type: boolean
+        strategyDescription:
+          type: string
+        strategyISIN:
+          type: string
+        strategyId:
+          format: int32
+          type: integer
+        strategyListed:
+          type: boolean
+        strategyLogoURL:
+          type: string
+        strategyNRIAllowed:
+          type: boolean
+        strategyName:
+          type: string
+        strategyShortName:
+          type: string
+        taxStatusAllowed:
+          type: array
+          items:
+            $ref: '#/components/schemas/StrategyTaxStatusAllowedUpdateService'
+    SectorMaster:
+      type: object
+      properties:
+        sector:
+          type: string
+        sectorId:
+          format: int32
+          type: integer
+    StatusMessage:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: array
+          items:
+            type: string
+    ResponseFile:
+      type: object
+      properties:
+        fileUsage:
+          type: string
+        name:
+          type: string
+        type:
+          type: string
+        url:
+          type: string
+    CustomerOccupationService:
+      type: object
+      properties:
+        annualIncome:
+          format: int32
+          type: integer
+        city:
+          type: string
+        country:
+          type: string
+        designation:
+          type: string
+        education:
+          format: int32
+          type: integer
+        employeeSince:
+          format: date-time
+          type: string
+        employerName:
+          type: string
+        establishmentName:
+          type: string
+        natureOfBusiness:
+          type: string
+        occupation:
+          format: int32
+          type: integer
+        officeAddress:
+          type: string
+        pep:
+          format: int32
+          type: integer
+        pincode:
+          type: string
+        primarySourceOfWealth:
+          format: int32
+          type: integer
+        state:
+          type: string
+    ManufacturerRPProfileService:
+      type: object
+      properties:
+        maximumScore:
+          format: int32
+          type: integer
+        minimumScore:
+          format: int32
+          type: integer
+        question:
+          type: array
+          items:
+            $ref: '#/components/schemas/ManufacturerRPQuestionAnswerService'
+        rpCategory:
+          type: string
+        rpCategoryDescription:
+          type: string
+        rpCode:
+          type: string
+        rpDescription:
+          type: string
+        rpName:
+          type: string
+        rpProfileScore:
+          format: int32
+          type: integer
+        softDelete:
+          type: boolean
+    CustomerNagativeListSectorsService:
+      type: object
+      properties:
+        sectorId:
+          format: int32
+          type: integer
+    AddressType:
+      type: object
+      properties:
+        addressTypeId:
+          format: int32
+          type: integer
+        addressTypeName:
+          type: string
+        createdBy:
+          format: int32
+          type: integer
+        createdDate:
+          format: date-time
+          type: string
+  requestBodies:
+    MasterManufacturer:
+      description: mastermanufacturer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/MasterManufacturer'
+      required: true
+    CustomerContactService:
+      description: customerContact
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerContactService'
+      required: true
+    CustomerFatcaDetailsService:
+      description: customerFatcaDetailsService
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerFatcaDetailsService'
+      required: true
+    CustomerInvestmentProfileDetailsService:
+      description: customerInvestmentProfile
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerInvestmentProfileDetailsService'
+      required: true
+    CustomerMasterService:
+      description: customer
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerMasterService'
+      required: true
+    CustomerAccountService:
+      description: customerAccountService
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/CustomerAccountService'
+      required: true
+    CustomerNomineeDetailsServiceArray:
+      description: customerNomineeDetailsService
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerNomineeDetailsService'
+      required: true
+    CustomerNomineeDetailsUpdateServiceArray:
+      description: customerNomineeDetailsServiceList
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/CustomerNomineeDetailsUpdateService'
+      required: true
+    handleFileUploadUsingPOST:
+      content:
+        multipart/form-data:
+          schema:
+            required:
+              - file
+            type: object
+            properties:
+              file:
+                format: binary
+                description: file
+                type: string
+    UserMaster:
+      description: usermaster
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/UserMaster'
+      required: true
+    mapPlatformMasterUsingGETJsonstring:
+      description: jsonString
+      content:
+        application/json:
+          schema:
+            type: string
+      required: true
+  securitySchemes:
+    JWTAuth:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
+      description: |-
+        Example: 
+        > Authorization: Bearer <token>
+      x-last-modified: 1623605943125
+    OpenIDAuth:
+      openIdConnectUrl: 'https://example.com/.well-known/openid-configuration'
+      type: openIdConnect
+      description: >-
+        OpenID Connect (OIDC) is an identity layer built on top of the OAuth 2.0
+        protocol.
+      x-last-modified: 1623605946028
+  headers: {}
+  responses: {}
+  parameters: {}
+security:
+  - JWTAuth: []
+  - OpenIDAuth: []
+tags:
+  - name: User Authentication
+    description: OTP Based Login and Authentication APIs
+  - name: Customer Management
+    description: Customer Management APIs to aid on boarding journey of a Customer
+  - name: User Management
+    description: User Controller
+  - name: Manufacturer Management
+    description: Manage Manufacturer specific configurations and data
+  - name: Distributor Management
+    description: Manage Distributor specific configurations and data
+  - name: Data Masters
+    description: 'Manage 1SilverBullet, Manufacturer and Distributor specific data masters'
